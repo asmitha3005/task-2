@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>E-Commerce Store</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Online Store</h1>
+
+{% if session.get("user") %}
+
+<a href="/logout">Logout</a>
+
+{% else %}
+
+<a href="/login">Login</a>
+
+{% endif %}
+
+<hr>
+
+<div class="products">
+
+{% for product in products %}
+
+<div class="card">
+
+<h3>{{ product[1] }}</h3>
+
+<p>{{ product[2] }}</p>
+
+<h4>₹ {{ product[3] }}</h4>
+
+<a href="/cart/{{ product[0] }}">
+
+<button>
+
+Add to Cart
+
+</button>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
