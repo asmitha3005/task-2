@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Checkout</h2>
+
+{% if cart %}
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Price</th>
+</tr>
+
+{% for item in cart %}
+
+<tr>
+<td>{{ item[1] }}</td>
+<td>₹ {{ item[2] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h3>Total: ₹ {{ total }}</h3>
+
+<form method="POST">
+
+<button type="submit">
+
+Place Order
+
+</button>
+
+</form>
+
+{% else %}
+
+<h3>Your Cart is Empty</h3>
+
+{% endif %}
+
+<a href="/">Back to Home</a>
+
+</div>
+
+</body>
+</html>
